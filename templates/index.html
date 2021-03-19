@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class='display-3'>Find A Hero</h1>
+{% if session['user_id'] %}
+<p> </p>
+{% else %}
+<p class='lead'>Log in! Register <a href ="/register">HERE</a> and search your favorite heros!</p>
+{% endif %}
+
+<h2>Search Superheros</h2>
+
+<form id='search-hero-form'>
+
+    <div>
+        <label for="form-name">Enter Hero's Name: </label>
+        <input name='name' id='form-name'>
+    </div>
+    <button>Search</button>
+
+    <ul id='superhero-list'>
+
+    </ul>
+
+
+</form>
+{% endblock %}
