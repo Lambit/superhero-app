@@ -1,26 +1,84 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<h1 class='display-3'>Find A Hero</h1>
+
+<!-- header -->
+<div class="header">
+    <h1 class='display-4'>Find A Hero</h1>
+</div>
+
+<!-- if statement to login -->
 {% if session['user_id'] %}
 <p> </p>
 {% else %}
 <p class='lead'>Log in! Register <a href ="/register">HERE</a> and search your favorite heros!</p>
 {% endif %}
 
-<h2>Search Superheros</h2>
+<!-- text above form -->
+<div class="search-superheros-header">
+    <h2>Search Superheros</h2>
+</div>
 
-<form id='search-hero-form'>
+<!-- form container -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- form1 -->
+            <form id="formOne" action="/superheros">
+                    
+                    <input type='text' name='name' id='hero-form' placeholder="Search Superhero">
+                <button id="buttonOne" class="buttonOneCls" type="submit">SEARCH</button>
+            </form>
+        </div>
+            
+<!-- Superhero 1 Card -->
+<div id="card-container" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="cardOne" class="card"  style="width: 18rem;">
+                <!-- info is payload data -->
+                {% if info %}
+                <img src="{{info['image']}}" class="card-img-top" alt="{{info['name']}}">
+                <div class="card-body">
+                  <h5 class="card-title">{{info['name']}}</h5>
+                  <p class="card-text">
+                    {{info['full_name']}}
+                    <br>
+                    {{info['pof']}}
+                    <br>
+                    <br>
+                    Intelligence: {{info['intelligence']}}
+                    <progress id="intelligence" value="{{info['intelligence']}}" max="100">{{info['intelligence']}}% </progress>
+                    <br>
+                    Strength: {{info['strength']}}
+                    <br>
+                    <progress id="strength" value="{{info['strength']}}" max="100">{{info['strength']}}% </progress>
+                    <br>
+                    Speed: {{info['speed']}}
+                    <br>
+                    <progress id="speed" value="{{info['speed']}}" max="100">{{info['speed']}}% </progress>
+                    <br>
+                    Durability: {{info['durability']}}
+                    <br>
+                    <progress id="durability" value="{{info['durability']}}" max="100">{{info['durability']}}% </progress>
+                    <br>
+                    Power: {{info['power']}}
+                    <br>
+                    <progress id="power" value="{{info['power']}}" max="100">{{info['power']}}% </progress>
+                    <br>
+                    Combat: {{info['combat']}}
+                    <br>
+                    <progress id="combat" value="{{info['combat']}}" max="100">{{info['combat']}}% </progress>
+                    <br>
+                  <form id="favorite">
+                    
+                    <a href="/favorites" id='addFavoriteButton' class="btn btn-primary">Add to Favorites</a>
+                  </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>    
+</div>
 
-    <div>
-        <label for="form-name">Enter Hero's Name: </label>
-        <input name='name' id='form-name'>
-    </div>
-    <button>Search</button>
-
-    <ul id='superhero-list'>
-
-    </ul>
-
-
-</form>
 {% endblock %}

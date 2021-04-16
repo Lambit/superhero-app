@@ -1,55 +1,48 @@
-const BASE_URL = 'https://superheroapi.com/api/10225580844013004';
+const BASE_URL = 'http://127.0.0.1:5000'
 
-// given dadta about superhero, generate html
+//  ------------SEARCH FORMS--------------------
+// change background color on formOne once clicked
+$('.buttonOneCls').click(function() {
+    // make a jQ collection of the DOM element from the event
+    let $elem = $(this);
+    let black = $elem.css('background-color');
+    $elem.css('backgroundColor', '#FF0000');
+    setTimeout(function() {
+      $elem.css('background-color', black);
+    }, 1000);
+  });
 
-function generateSuperheroHTML(superhero) {
-    return `
-        <div data-superhero-id=${superhero.id}
-         <li>
-            ${superhero.name}
-            <button class="delete-button">X</button>
-         </li>
-         <img class="Superhero-img"
-                src="${superhero.image}"
-                alt="(no image provided)"
-        </div>
-        `;
+
+//favorites page
+
+$('.delete-superhero').click(deleteSuperhero)
+
+async function deleteSuperhero() {
+    const id =$(this).data('id')
+    await axios.delete(`api/superheros/${id}`)
+    $(this).closest('tr').remove()
 }
 
-// put intial hero on page
 
-async function showInitialSuperhero() {
-    const response = await axios.get(`${BASE_URL}/search/name`);
 
-    for(let superheroData of response.data.superheros) {
-        let newSuperhero = $(generateSuperheroHTML(superheroData));
-        $("#superhero-list").append(newSuperhero);
-    }
-}
+// ---------------SUPERHERO CARDS-----------------------------------
+// on click function to hide card then display it when form is submitted
 
-// handle form for adding of new superhero
+// document.getElementById('buttonOne').onclick = function(event){
+//     event.preventDefault();
+//     let showCard = document.getElementById('cardOne');
+//     if ( showCard.style.display != 'none' ){
+//         showCard.style.display = 'block';
+//     }
+//     else {
+//         showCard.style.display = 'block';
+//     };
+// };
 
-$('#search-hero-form').on('submit', async function (evt) {
-    evt.preventDefault();
 
-    let name = $("#form-name").val();
 
-    const newSuperheroResponse = await axios.post(`${BASE_URL}/search/${name}`, {
-        name
-    });
 
-    let newSuperhero = $(generateSuperheroHTML(newSuperheroResponse.data.superhero));
-    $("#superhero-list").append(newSuperhero);
-    $("#search-hero-form").trigger("reset");
-});
 
-$("#superhero-list").on("click", ".delete-button", async function (evt) {
-    evt.preventDefault();
-    let $superhero = $(evt.target).closest('div');
-    let superheroId = $superhero.attr("data-superhero-id");
 
-    await axios.delete(`${BASE_URL}/superheros/${superheroId}`);
-    $superhero.remove();
-});
 
-$(showInitialSuperhero);
+

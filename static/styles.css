@@ -1,0 +1,62 @@
+
+.header {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.lead {
+    text-align: center;
+}
+
+#alert-text {
+    text-align: center;
+}
+
+.search-superheros-header{
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#formOne{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 21pt;
+}
+
+#buttonOne {
+    background-color: black;
+    color: white;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0px; 
+}
+
+#cardOne {
+    box-shadow: black 0 0 10px;
+}
+
+
+/* table styles */
+
+.favorites-superheros-header {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.table-image {
+    height: 200px;
+    width: auto;
+    display: flex;
+    box-shadow: black 0 0 10px;
+    
+}
+
+
+.image-table-name {
+    display: flex;
+    font-size: large;
+}
+
+#table-button {
+    box-shadow: black 0 0 10px;
+}

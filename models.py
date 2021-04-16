@@ -48,33 +48,86 @@ class Superhero(db.Model):
 
     __tablename__ = 'superheros'
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, nullable=False)
-    powerstats = db.Column(db.Text, nullable=False)
-    bio = db.Column(db.Text, nullable=False)
+    intelligence = db.Column(db.Text, nullable=False)
+    strength = db.Column(db.Text, nullable=False)
+    speed = db.Column(db.Text, nullable=False)
+    durability = db.Column(db.Text, nullable=False)
+    power = db.Column(db.Text, nullable=False)
+    combat = db.Column(db.Text, nullable=False)
+    full_name = db.Column(db.Text)
+    pof = db.Column(db.Text)
     image = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    user = db. relationship('User', backref="superheros")
+    user = db.relationship('User', backref="superheros")
 
-    def to_dict(self):
-        """Serialize superheros to a dictionary of hero info"""
+    def __init__(self, id, name, intelligence, strength, speed, durability, power, combat, full_name, pof, image):
+        self.id = id
+        self.name = name
+        self.intelligence = intelligence
+        self.strength = strength
+        self.speed = speed
+        self.durability = durability
+        self.power = power
+        self.combat = combat
+        self.full_name = full_name
+        self.pof = pof
+        self.image = image
+        self.user_id = user_id
 
-        return {
-            "id": self.id,
-            "name": self.name,
-            "powerstats": self.powerstats,
-            "bio": self.bio,
-            "image": self.image
-        }
+    # def to_dict(self):
+    #     """Serialize superheros to a dictionary of hero info"""
+
+    #     return {
+    #         "id": self.id,
+    #         "name": self.name,
+    #         "intelligence": self.intelligence,
+    #         "strength": self.strength,
+    #         "speed": self.speed,
+    #         "durability": self.durability,
+    #         "power": self.power,
+    #         "combat": self.combat,
+    #         "full_name": self.full_name,
+    #         "pof": self.pof,
+    #         "image": self.image
+    #     }
 
 
 # table for favorited heros by user
 class Favoritehero(db.Model):
     __tablename__ = 'fav_heros'
-
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    text = db.Column(db.Text, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text, nullable=False)
+    intelligence = db.Column(db.Integer, nullable=False)
+    strength = db.Column(db.Integer, nullable=False)
+    speed = db.Column(db.Integer, nullable=False)
+    durability = db.Column(db.Integer, nullable=False)
+    power = db.Column(db.Integer, nullable=False)
+    combat = db.Column(db.Integer, nullable=False)
+    full_name = db.Column(db.Text)
+    pof = db.Column(db.Text)
+    image = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    user = db. relationship('User', backref="fav_heros")
+    user = db.relationship('User', backref="fav_heros")   
+
+    def to_dict(self):
+        """Serialize superheros to a dictionary of hero info"""
+        return {
+            "id": self.id,
+            "name": self.name,
+            "intelligence": self.intelligence,
+            "strength": self.strength,
+            "speed": self.speed,
+            "durability": self.durability,
+            "power": self.power,
+            "combat": self.combat,
+            "full_name": self.full_name,
+            "pof": self.pof,
+            "image": self.image
+        }
+
+        
+        
