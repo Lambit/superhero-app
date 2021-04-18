@@ -47,9 +47,7 @@ def get_hero():
     """
     try:
         name = request.args['name']
-        print('name ' + name)
         res = requests.get(f"{BASE_URL}/search/{name}", params={'name': name})
-        print(res)
         data = res.json() 
 
         superhero = Favoritehero(
@@ -90,14 +88,15 @@ def get_hero():
     return render_template('index.html', superhero=superhero, info=info)
 
 
+# ------------FAVORITES PAGE-----------
 
-# favorites page
 @app.route("/favorites")
 def favorite_page():
     superheros = Favoritehero.query.all()
     return render_template('favorites.html', superheros=superheros)
     
 
+# -----------REGISTER, LOGIN & LOGOUT PAGES------------
 # route to register user
 @app.route('/register', methods=['GET', 'POST'])
 def regiseter_user():

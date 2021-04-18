@@ -5,6 +5,14 @@
 <div class="favorites-superheros-header">
     <h1 class= "display-3">Favorites</h1>
 </div>
+
+<div class="back-container">
+    <form  class='back-button'>              
+        <a href="/" id='backButton' class="btn btn-primary">Go Back</a>
+    </form>
+</div>
+    
+
 <div class="container">
     <div class="table-responsive">
         <table class="table table-striped">
@@ -19,7 +27,7 @@
                     <td><img src="{{superhero.image}}" alt="{{superhero.name}}" class="table-image">
                         {{superhero.name}}
                     </td>
-                    <td><button id="table-button" class="btn btn-danger" class='delete-superhero' data-id="{{superhero.id}}">Delete Favorite</button></td>
+                    <td><button id="table-button"  class='delete-superhero btn btn-danger' data-id="{{superhero.id}}">Delete Favorite</button></td>
                 </tr>
 
                 {% endfor %}

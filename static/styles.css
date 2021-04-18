@@ -17,6 +17,10 @@
     text-align: center;
 }
 
+.container-search-form {
+    text-align: center;
+}
+
 #formOne{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -31,12 +35,30 @@
     border-radius: 0px; 
 }
 
+.card-container {
+    display: block;
+    text-align: center;
+}
+
 #cardOne {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 10px;
     box-shadow: black 0 0 10px;
 }
 
 
 /* table styles */
+
+.back-container {
+    display: block;
+    text-align: center;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+}
 
 .favorites-superheros-header {
     text-align: center;
@@ -59,4 +81,5 @@
 
 #table-button {
     box-shadow: black 0 0 10px;
+    
 }
