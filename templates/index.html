@@ -31,7 +31,7 @@
             </form>
         </div>
             
-<!-- Superhero 1 Card -->
+<!-- Superhero Card -->
 <div id="card-container" class="container">
     <div class="row">
         <div class="col-md-12">
@@ -70,9 +70,9 @@
                     <br>
                     <progress id="combat" value="{{info['combat']}}" max="100">{{info['combat']}}% </progress>
                     <br>
-                  <form id="favorite">
-                    
-                    <a href="/favorites" id='addFavoriteButton' class="btn btn-primary">Add to Favorites</a>
+                    <!--form to submit to favorites -->
+                  <form name="favorite" method="POST">
+                    <a href="/favorites" id='addFavoriteButton' class=" add-hero btn btn-primary">Add to Favorites</a>
                   </form>
                 </div>
                 {% endif %}
